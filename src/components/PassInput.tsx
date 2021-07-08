@@ -16,7 +16,7 @@ export const PassInput: React.FC<IProps> = (props) => {
   };
   return (
     <BaseInput
-      icon={type === "password" ? EyeCloseIcon : EyeOpenIcon}
+      icon={type === "password" ? EyeCloseIcon.id : EyeOpenIcon.id}
       type={type}
       iconClick={iconClick}
       placeholder={placeholder}

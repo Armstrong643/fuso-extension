@@ -1,2 +1,8 @@
-declare module "*.png";
-declare module "*.svg";
+export interface Browser {
+  [key: string]: any;
+}
+declare global {
+  interface Window {
+    browser: Browser;
+  }
+}

@@ -50,6 +50,11 @@ module.exports = {
       chunks: ["browser"],
     }),
     new HtmlWebpackPlugin({
+      filename: "window.html",
+      template: "public/index.html",
+      chunks: ["browser"],
+    }),
+    new HtmlWebpackPlugin({
       filename: "background.html",
       template: "public/index.html",
       chunks: ["background"],
@@ -72,7 +77,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(png|jpg|gif|svg|ttf|otf|eot|woff2?)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.(png|jpg|gif|ttf|otf|eot|woff2?)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: [
           {
             loader: "file-loader",
@@ -107,6 +112,21 @@ module.exports = {
       {
         test: /\.s[ca]ss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "svg-sprite-loader",
+            options: {},
+          },
+          {
+            loader: "svgo-loader",
+            options: {
+              plugins: [{ params: { attrs: "fill" }, name: "removeAttrs" }],
+            },
+          },
+        ],
       },
     ],
   },

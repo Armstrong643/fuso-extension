@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Icon } from "@/components";
 import classnames from "classnames";
 interface IProps {
   onChange?: (e: string) => void;
@@ -6,13 +7,13 @@ interface IProps {
   className?: string;
   type?: "text" | "password" | "textarea";
   placeholder?: string;
-  defaultValue?: string;
+  value?: string;
   icon?: string;
   iconClick?: () => void;
   tips?: string;
+  readonly?: boolean;
 }
 export const BaseInput: React.FC<IProps> = (props) => {
-  const [value, setValue] = useState<string>();
   let {
     onChange,
     type = "text",
@@ -22,13 +23,14 @@ export const BaseInput: React.FC<IProps> = (props) => {
     iconClick,
     style,
     tips,
+    value,
+    readonly,
   } = props;
   const classes = classnames("base-input", className);
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     let { value } = e.target;
-    setValue(e.target.value);
     onChange && onChange(value);
   };
   const handleIconClick = () => {
@@ -41,6 +43,7 @@ export const BaseInput: React.FC<IProps> = (props) => {
           placeholder={placeholder}
           onChange={handleChange}
           value={value}
+          readOnly={readonly}
         ></textarea>
       ) : (
         <input
@@ -48,10 +51,11 @@ export const BaseInput: React.FC<IProps> = (props) => {
           placeholder={placeholder}
           onChange={handleChange}
           value={value}
+          readOnly={readonly}
         />
       )}
       {tips ? <p>{tips}</p> : null}
-      {icon ? <img src={icon} alt="" onClick={handleIconClick} /> : null}
+      {icon ? <Icon href={icon} onClick={handleIconClick} /> : null}
     </div>
   );
 };
