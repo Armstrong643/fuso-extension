@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from "react";
 import { BaseButton, PassInput, Icon } from "@/components";
-import { LogoIcon } from "@/components/Icon";
 
 import "../styles/comeback.scss";
 const Main: React.FC = () => {
@@ -13,7 +12,7 @@ const Main: React.FC = () => {
   }, [password]);
   return (
     <div className="come-back">
-      <Icon href={LogoIcon.id} />
+      <img src="/img/logo.svg" alt="" />
       <h3>欢迎回来</h3>
       <PassInput
         placeholder="密码"

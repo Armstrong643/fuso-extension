@@ -55,7 +55,14 @@ export const BaseInput: React.FC<IProps> = (props) => {
         />
       )}
       {tips ? <p>{tips}</p> : null}
-      {icon ? <Icon href={icon} onClick={handleIconClick} /> : null}
+      {icon ? (
+        <Icon
+          href={icon}
+          onClick={handleIconClick}
+          fill="#999CAD"
+          stroke="#999CAD00"
+        />
+      ) : null}
     </div>
   );
 };

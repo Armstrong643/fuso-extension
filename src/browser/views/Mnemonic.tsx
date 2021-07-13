@@ -1,9 +1,9 @@
 import React, { useState, useMemo, useContext, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { BaseButton, BaseInput, Icon } from "@/components";
-import { AppContext } from "@/context/mnemonic";
+import { AppContext } from "@/context/app";
 import { mnemonicGenerate, mnemonicValidate } from "@polkadot/util-crypto";
-import { BackIcon, NoScreenShotsIcon, WarningIcon } from "@/components/Icon";
+import { Icons } from "@/components/Icon";
 import "../styles/mnemonic.scss";
 import extension from "@/utils/chrome";
 const textMap = {
@@ -21,8 +21,11 @@ const textMap = {
 const Main: React.FC = () => {
   const history = useHistory();
   const { type } = useParams<{ type: "create" | "import" }>();
-  const [isMaskShow, setIsMaskShow] = useState<boolean>(false);
-  const { mnemonic, setMnemonic } = useContext(AppContext);
+  const [isMaskShow, setIsMaskShow] = useState<boolean>(true);
+  const {
+    appState: { mnemonic },
+    dispatch,
+  } = useContext(AppContext);
   const [userMnemonic, setUserMnemonic] = useState<string>("");
   const disabled = useMemo(() => {
     return type !== "create" && !mnemonicValidate(userMnemonic);
@@ -31,7 +34,10 @@ const Main: React.FC = () => {
     let newMnemonic = "";
     if (!mnemonic) {
       newMnemonic = mnemonicGenerate();
-      setMnemonic(newMnemonic);
+      dispatch({
+        type: "SET_MNEMONIC",
+        payload: newMnemonic,
+      });
     }
     if (type === "create") {
       setUserMnemonic(mnemonic || newMnemonic);
@@ -55,7 +61,9 @@ const Main: React.FC = () => {
     <div className="mnemonic">
       <header className="base-header">
         <Icon
-          href={BackIcon.id}
+          fill="#999CAD"
+          stroke="#999CAD00"
+          href={Icons.BackIcon.id}
           onClick={() => {
             history.goBack();
           }}
@@ -80,7 +88,13 @@ const Main: React.FC = () => {
       <footer>
         {type === "create" ? (
           <div className="warning">
-            <Icon href={WarningIcon.id} />
+            <Icon
+              href={Icons.WarningIcon.id}
+              fill="#FAAD14"
+              stroke="#FAAD1400"
+              width={16}
+              heihgt={16}
+            />
             <p>切勿与任何人分享助记词，安全的存储它！</p>
             <p>助记词一旦丢失，资产将无法恢复</p>
             <p>请勿通过截屏、网络传输的方式进行备份保存</p>
@@ -93,7 +107,7 @@ const Main: React.FC = () => {
       {isMaskShow ? (
         <div className="mask">
           <div className="no-screenshots">
-            <Icon href={NoScreenShotsIcon.id} />
+            <img src="/img/no-screenshots.svg" alt="" />
             <h3>切勿截图</h3>
             <p>
               请勿截取屏幕快照进行共享和存储，否则可能会被第三方恶意软件收集并造成资产损失

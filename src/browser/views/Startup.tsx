@@ -1,12 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { BaseButton, Icon } from "@/components";
-import { WalletIcon } from "@/components/Icon";
+import { Icons } from "@/components/Icon";
 import "../styles/startup.scss";
 const Main: React.FC = () => {
   return (
     <div className="start-up">
-      <Icon href={WalletIcon.id} />
+      <Icon href={Icons.WalletIcon.id} />
       <h3>
         <span>FUSOTAO</span> 钱包
       </h3>

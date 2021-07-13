@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { PassInput, BaseButton, BaseInput, Icon } from "@/components";
-import { BackIcon } from "@/components/Icon";
+import { Icons } from "@/components/Icon";
 import "../styles/createwallet.scss";
 const Main: React.FC = () => {
   const history = useHistory();
@@ -40,9 +40,9 @@ const Main: React.FC = () => {
   const handleClick = () => {};
   return (
     <div className="create-wallet">
-      <header>
+      <header className="base-header">
         <Icon
-          href={BackIcon.id}
+          href={Icons.BackIcon.id}
           onClick={() => {
             history.goBack();
           }}

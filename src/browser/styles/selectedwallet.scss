@@ -1,0 +1,110 @@
+.selected-wallet {
+  header {
+    justify-content: space-between;
+    .selected {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 94px;
+      height: 36px;
+      border: 1px solid #18c9bd;
+      box-sizing: border-box;
+      border-radius: 24px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #18c9bd;
+      cursor: pointer;
+    }
+  }
+  main {
+    .card {
+      height: 124px;
+      left: 20px;
+      padding: 15px;
+      box-sizing: border-box;
+      background: linear-gradient(
+        90.31deg,
+        #16c9bd 0.27%,
+        #28d6ca 63.11%,
+        #20e7d9 98.15%
+      );
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 12px;
+      h3 {
+        margin: 5px 0 24px;
+        font-size: 24px;
+      }
+    }
+    .token-list {
+      margin-top: 20px;
+      height: 288px;
+      overflow-y: auto;
+      li {
+        height: 72px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.03);
+        font-size: 16px;
+        color: #282828;
+        > img {
+          margin-right: 10px;
+        }
+        > span {
+          flex: 1;
+        }
+        .right {
+          position: relative;
+          padding-right: 20px;
+          line-height: 24px;
+          text-align: right;
+          p {
+            font-size: 12px;
+            color: #999cad;
+          }
+          svg {
+            position: absolute;
+            right: 0;
+            top: 10px;
+          }
+        }
+      }
+    }
+  }
+  footer {
+    margin-top: 28px;
+    text-align: center;
+  }
+  .drawer {
+    > .content {
+      width: 280px;
+      height: 100%;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      .header {
+        box-sizing: border-box;
+        height: 56px;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #282828;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        h4 {
+          font-weight: normal;
+        }
+        svg {
+          cursor: pointer;
+        }
+      }
+      .wallet-list {
+        flex: 1;
+      }
+    }
+  }
+}

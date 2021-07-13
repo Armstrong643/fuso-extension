@@ -119,6 +119,20 @@ class Extension {
       }
     });
   }
+  sendMessage(message: any, responseCallback: (response: any) => void) {
+    let { sendMessage } = chrome.runtime;
+    sendMessage(message, responseCallback);
+  }
+  onMessage(
+    fn: (
+      message: any,
+      sender: chrome.runtime.MessageSender,
+      sendResponse: (response?: any) => void
+    ) => void
+  ) {
+    let { onMessage } = chrome.runtime;
+    onMessage.addListener(fn);
+  }
 }
 const extension = new Extension();
 export default extension;
