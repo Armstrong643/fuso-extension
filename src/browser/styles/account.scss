@@ -1,0 +1,45 @@
+.account-detail {
+  text-align: center;
+  main {
+    > h3 {
+      font-size: 24px;
+      line-height: 32px;
+      color: #282828;
+    }
+    > h4 {
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 24px;
+      color: #999cad;
+    }
+    > p {
+      margin: 0 auto;
+      margin-top: 20px;
+      width: 140px;
+      line-height: 24px;
+      background-color: #f6f6f6;
+      color: #999cad;
+      font-size: 12px;
+      border-radius: 16px;
+    }
+    > div {
+      margin-top: 40px;
+      margin-bottom: 60px;
+      .base-button {
+        margin: 0 15px;
+        width: 120px;
+        background-color: #fff;
+        border: 1px solid #18c9bd;
+        color: #18c9bd;
+        svg {
+          transform: translateY(6px);
+        }
+      }
+    }
+    a {
+      color: #999cad;
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+}

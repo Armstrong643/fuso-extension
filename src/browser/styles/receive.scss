@@ -1,0 +1,35 @@
+.receive.layout {
+  color: #fff;
+  text-align: center;
+  .base-header {
+    color: #fff;
+  }
+  main {
+    > h3 {
+      text-align: left;
+      color: #fff;
+    }
+    > p {
+      font-size: 16px;
+      line-height: 24px;
+      &:nth-of-type(2) {
+        opacity: 0.8;
+      }
+    }
+    .qrcode {
+      margin: 20px 0;
+      display: inline-block;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 14px;
+    }
+    > h4 {
+      margin: 0 auto;
+      width: 280px;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 24px;
+      word-break: break-all;
+    }
+  }
+}

@@ -6,14 +6,18 @@ import Startup from "./views/Startup";
 import Comeback from "./views/Comeback";
 import CreateWallet from "./views/CreateWallet";
 import Mnemonic from "./views/Mnemonic";
-import SelectedWallet from "./views/SelectedWallet";
+import Accounts from "./views/Accounts";
 import AddToken from "./views/AddToken";
-const Main: React.FC = () => {
+import AccountDetail from "./views/AccountDetail";
+import Send from "./views/Send";
+import Receive from "./views/Receive";
+import WalletManage from "./views/WalletManage";
+const App: React.FC = () => {
   const history = useHistory();
   const { dispatch } = useContext(AppContext);
   const { accounts } = useContext(AccountsContext);
   useEffect(() => {
-    history.push("/walletlist");
+    history.push("/walletmanage");
     let account = accounts["TAO"][0];
     if (account) {
       dispatch({
@@ -28,9 +32,13 @@ const Main: React.FC = () => {
       <Route component={Comeback} path="/comeback" />
       <Route component={CreateWallet} path="/createwallet/:type" />
       <Route component={Mnemonic} path="/mnemonic/:type" />
-      <Route component={SelectedWallet} path="/walletlist" />
+      <Route component={Accounts} path="/accounts" />
       <Route component={AddToken} path="/addtoken" />
+      <Route component={AccountDetail} path="/account" />
+      <Route component={Send} path="/send" />
+      <Route component={Receive} path="/receive" />
+      <Route component={WalletManage} path="/walletmanage" />
     </Switch>
   );
 };
-export default Main;
+export default App;

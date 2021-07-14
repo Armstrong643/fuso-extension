@@ -21,15 +21,3 @@ ul,
 li {
   list-style: none;
 }
-.base-header {
-  height: 56px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  line-height: 24px;
-  color: #999cad;
-  > svg {
-    cursor: pointer;
-  }
-}

@@ -1,35 +1,35 @@
 const Chains: Chain[] = [
   {
     name: "TAO",
-    icon: "/img/coin/tao.svg",
+    icon: "/img/coin/TAO.svg",
   },
   {
     name: "BTC",
-    icon: "/img/coin/btc.svg",
+    icon: "/img/coin/BTC.svg",
   },
   {
     name: "ETH",
-    icon: "/img/coin/eth.svg",
+    icon: "/img/coin/ETH.svg",
   },
   {
     name: "LTC",
-    icon: "/img/coin/ltc.svg",
+    icon: "/img/coin/LTC.svg",
   },
   {
     name: "FIL",
-    icon: "/img/coin/fil.svg",
+    icon: "/img/coin/FIL.svg",
   },
   {
     name: "TRX",
-    icon: "/img/coin/trx.svg",
+    icon: "/img/coin/TRX.svg",
   },
   {
     name: "DOGE",
-    icon: "/img/coin/doge.svg",
+    icon: "/img/coin/DOGE.svg",
   },
   {
     name: "DOT",
-    icon: "/img/coin/dot.svg",
+    icon: "/img/coin/DOT.svg",
   },
 ];
 export default Chains;

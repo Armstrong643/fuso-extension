@@ -23,6 +23,7 @@ class Extension {
     };
     return new Promise((resolve) => {
       local.set(obj);
+      resolve(true);
     });
   }
   /**

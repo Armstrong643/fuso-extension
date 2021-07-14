@@ -1,10 +1,7 @@
 import React, { useState, useMemo } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { PassInput, BaseButton, BaseInput, Icon } from "@/components";
-import { Icons } from "@/components/Icon";
-import "../styles/createwallet.scss";
+import { useParams } from "react-router-dom";
+import { Layout, PassInput, BaseButton, BaseInput } from "@/components";
 const Main: React.FC = () => {
-  const history = useHistory();
   const { type } = useParams<{ type: string }>();
   const [mnemonic, setMnemonic] = useState<string>();
   const [password1, setPassword1] = useState<string>("");
@@ -38,51 +35,24 @@ const Main: React.FC = () => {
     setMnemonic(value);
   };
   const handleClick = () => {};
+  const footer = (
+    <BaseButton onClick={handleClick} disabled={disabled}>
+      下一步
+    </BaseButton>
+  );
   return (
-    <div className="create-wallet">
-      <header className="base-header">
-        <Icon
-          href={Icons.BackIcon.id}
-          onClick={() => {
-            history.goBack();
-          }}
+    <Layout title={type === "new" ? "创建钱包" : "助记词导入"} footer={footer}>
+      {type === "import" ? (
+        <BaseInput
+          type="textarea"
+          placeholder="请输入助记词，用空格分割"
+          onChange={handleChange3}
+          tips={tips3}
         />
-        返回
-      </header>
-      <main>
-        <h3> {type === "new" ? "创建钱包" : "助记词导入"}</h3>
-        {type === "import" ? (
-          <BaseInput
-            type="textarea"
-            style={{
-              marginBottom: "26px",
-            }}
-            placeholder="请输入助记词，用空格分割"
-            onChange={handleChange3}
-            tips={tips3}
-          />
-        ) : null}
-
-        <PassInput
-          placeholder="密码"
-          style={{
-            marginBottom: "26px",
-          }}
-          onChange={handleChange1}
-          tips={tips1}
-        />
-        <PassInput
-          placeholder="确认密码"
-          onChange={handleChange2}
-          tips={tips2}
-        />
-      </main>
-      <footer>
-        <BaseButton onClick={handleClick} disabled={disabled}>
-          下一步
-        </BaseButton>
-      </footer>
-    </div>
+      ) : null}
+      <PassInput placeholder="密码" onChange={handleChange1} tips={tips1} />
+      <PassInput placeholder="确认密码" onChange={handleChange2} tips={tips2} />
+    </Layout>
   );
 };
 export default Main;

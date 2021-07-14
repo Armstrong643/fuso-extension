@@ -5,3 +5,5 @@ export { Icon } from "./Icon";
 export { Address } from "./Address";
 export { WalletList } from "./WalletList";
 export { Drawer } from "./Drawer";
+export { BaseHeader } from "./BaseHeader";
+export { Layout } from "./Layout";

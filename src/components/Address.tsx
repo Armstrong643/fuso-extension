@@ -2,6 +2,7 @@ import React from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Icon } from "@/components";
 import CopyIcon from "@/images/copy.svg";
+import { shortenAddress } from "@/utils/util";
 interface IProps {
   text: string;
   showCopy?: boolean;
@@ -11,9 +12,7 @@ interface IProps {
   height?: number;
   style?: React.CSSProperties;
 }
-function shortenAddress(address: string) {
-  return address.replace(/(.{6})(.*)(.{6})/, "$1...$3");
-}
+
 export const Address: React.FC<IProps> = (props) => {
   let {
     text,
@@ -43,7 +42,9 @@ export const Address: React.FC<IProps> = (props) => {
               stroke={stroke}
               fill={fill}
             />
-          ) : null}
+          ) : (
+            <></>
+          )}
         </CopyToClipboard>
       </span>
     </div>

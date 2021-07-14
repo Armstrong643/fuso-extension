@@ -1,4 +1,4 @@
-.selected-wallet {
+.accounts {
   header {
     justify-content: space-between;
     .selected {
@@ -74,10 +74,6 @@
       }
     }
   }
-  footer {
-    margin-top: 28px;
-    text-align: center;
-  }
   .drawer {
     > .content {
       width: 280px;
@@ -104,6 +100,24 @@
       }
       .wallet-list {
         flex: 1;
+      }
+      .menu {
+        li {
+          padding: 0 16px;
+          display: flex;
+          height: 64px;
+          align-items: center;
+          box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.03);
+          color: #282828;
+          font-size: 16px;
+          cursor: pointer;
+          > svg {
+            margin-right: 16px;
+          }
+          > span {
+            flex: 1;
+          }
+        }
       }
     }
   }

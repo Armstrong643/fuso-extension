@@ -8,6 +8,10 @@ import WarningIcon from "@/images/warning.svg";
 import WalletIcon from "@/images/wallet.svg";
 import CrossIcon from "@/images/cross.svg";
 import EditIcon from "@/images/edit.svg";
+import SendIcon from "@/images/send.svg";
+import ReceiveIcon from "@/images/receive.svg";
+import AddressIcon from "@/images/address.svg";
+import UserIcon from "@/images/user.svg";
 interface IProps {
   fill?: string;
   stroke?: string;
@@ -52,6 +56,10 @@ export const Icons: {
   WalletIcon: IconProps;
   CrossIcon: IconProps;
   EditIcon: IconProps;
+  SendIcon: IconProps;
+  ReceiveIcon: IconProps;
+  AddressIcon: IconProps;
+  UserIcon: IconProps;
   [key: string]: IconProps;
 } = {
   SettingIcon,
@@ -62,4 +70,8 @@ export const Icons: {
   WalletIcon,
   CrossIcon,
   EditIcon,
+  SendIcon,
+  ReceiveIcon,
+  AddressIcon,
+  UserIcon,
 };

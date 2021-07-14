@@ -3,11 +3,13 @@ import classnames from "classnames";
 interface IProps {
   position?: "left" | "right" | "top" | "bottom";
   isShowAside: boolean;
+  onModalClick?: () => void;
 }
 export const Drawer: React.FC<IProps> = ({
   position = "left",
   children,
   isShowAside,
+  onModalClick,
 }) => {
   const styles = useMemo(() => {
     switch (position) {
@@ -27,7 +29,7 @@ export const Drawer: React.FC<IProps> = ({
         return {
           transform: isShowAside ? "translateY(0)" : "translateY(100%)",
           left: 0,
-          top: 0,
+          bottom: 0,
         };
       case "top":
         return {
@@ -42,8 +44,19 @@ export const Drawer: React.FC<IProps> = ({
     hide: !isShowAside,
   });
   return (
-    <div className={classes}>
-      <div className="content" style={styles}>
+    <div
+      className={classes}
+      onClick={() => {
+        onModalClick && onModalClick();
+      }}
+    >
+      <div
+        className="content"
+        style={styles}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         {children}
       </div>
     </div>

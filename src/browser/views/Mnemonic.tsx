@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useContext, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { BaseButton, BaseInput, Icon } from "@/components";
+import { Layout, BaseButton, BaseInput, Icon, BaseHeader } from "@/components";
 import { AppContext } from "@/context/app";
 import { mnemonicGenerate, mnemonicValidate } from "@polkadot/util-crypto";
 import { Icons } from "@/components/Icon";
@@ -49,29 +49,34 @@ const Main: React.FC = () => {
     setUserMnemonic(value);
   };
   const handleClick = () => {
-    extension.getAllWindows().then((res) => {
-      console.log(res);
-    });
-    extension.createWindow();
     if (type === "create") {
       history.push("/mnemonic/import");
     }
   };
+  const footer = (
+    <>
+      {type === "create" ? (
+        <div className="warning">
+          <Icon
+            href={Icons.WarningIcon.id}
+            fill="#FAAD14"
+            stroke="#FAAD1400"
+            width={16}
+            heihgt={16}
+          />
+          <p>切勿与任何人分享助记词，安全的存储它！</p>
+          <p>助记词一旦丢失，资产将无法恢复</p>
+          <p>请勿通过截屏、网络传输的方式进行备份保存</p>
+        </div>
+      ) : null}
+      <BaseButton onClick={handleClick} disabled={disabled}>
+        {textMap[type].buttonText}
+      </BaseButton>
+    </>
+  );
   return (
-    <div className="mnemonic">
-      <header className="base-header">
-        <Icon
-          fill="#999CAD"
-          stroke="#999CAD00"
-          href={Icons.BackIcon.id}
-          onClick={() => {
-            history.goBack();
-          }}
-        />
-        返回
-      </header>
-      <main>
-        <h3> {textMap[type].title}</h3>
+    <>
+      <Layout className="mnemonic" title={textMap[type].title} footer={footer}>
         <p>{textMap[type].tip1}</p>
         <BaseInput
           type="textarea"
@@ -84,26 +89,7 @@ const Main: React.FC = () => {
           value={userMnemonic}
           readonly={type === "create"}
         />
-      </main>
-      <footer>
-        {type === "create" ? (
-          <div className="warning">
-            <Icon
-              href={Icons.WarningIcon.id}
-              fill="#FAAD14"
-              stroke="#FAAD1400"
-              width={16}
-              heihgt={16}
-            />
-            <p>切勿与任何人分享助记词，安全的存储它！</p>
-            <p>助记词一旦丢失，资产将无法恢复</p>
-            <p>请勿通过截屏、网络传输的方式进行备份保存</p>
-          </div>
-        ) : null}
-        <BaseButton onClick={handleClick} disabled={disabled}>
-          {textMap[type].buttonText}
-        </BaseButton>
-      </footer>
+      </Layout>
       {isMaskShow ? (
         <div className="mask">
           <div className="no-screenshots">
@@ -123,7 +109,7 @@ const Main: React.FC = () => {
           </div>
         </div>
       ) : null}
-    </div>
+    </>
   );
 };
 export default Main;
