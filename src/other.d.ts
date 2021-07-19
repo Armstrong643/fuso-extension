@@ -5,6 +5,7 @@ declare module "*.svg" {
 interface Chain {
   name: string;
   icon: string;
+  bg: string;
 }
 interface WalletAccount {
   chain: string;
@@ -24,4 +25,9 @@ interface Token {
   precision?: string;
   icon?: string;
   balance?: string;
+}
+interface Contact {
+  chain: string;
+  name: string;
+  address: string;
 }

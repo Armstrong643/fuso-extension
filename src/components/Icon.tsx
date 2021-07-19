@@ -12,6 +12,9 @@ import SendIcon from "@/images/send.svg";
 import ReceiveIcon from "@/images/receive.svg";
 import AddressIcon from "@/images/address.svg";
 import UserIcon from "@/images/user.svg";
+import CopyIcon from "@/images/copy.svg";
+import EyeOpenIcon from "@/images/eye-open.svg";
+import EyeCloseIcon from "@/images/eye-close.svg";
 interface IProps {
   fill?: string;
   stroke?: string;
@@ -19,6 +22,7 @@ interface IProps {
   heihgt?: number;
   href: string;
   onClick?: () => void;
+  className?: string;
 }
 interface IconProps {
   id: string;
@@ -31,6 +35,7 @@ export const Icon: React.FC<IProps> = ({
   heihgt = 24,
   href,
   onClick,
+  className,
 }) => {
   const handleClick = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     onClick && onClick();
@@ -42,6 +47,7 @@ export const Icon: React.FC<IProps> = ({
       stroke={stroke}
       width={width}
       height={heihgt}
+      className={className}
     >
       <use xlinkHref={"#" + href} />
     </svg>
@@ -60,6 +66,9 @@ export const Icons: {
   ReceiveIcon: IconProps;
   AddressIcon: IconProps;
   UserIcon: IconProps;
+  CopyIcon: IconProps;
+  EyeOpenIcon: IconProps;
+  EyeCloseIcon: IconProps;
   [key: string]: IconProps;
 } = {
   SettingIcon,
@@ -74,4 +83,7 @@ export const Icons: {
   ReceiveIcon,
   AddressIcon,
   UserIcon,
+  CopyIcon,
+  EyeOpenIcon,
+  EyeCloseIcon,
 };

@@ -1,0 +1,56 @@
+.wallet-detail {
+  .account-card {
+    height: 72px;
+    margin-bottom: 10px;
+    padding: 0;
+    border-radius: 0;
+    background-color: #fff;
+    > img {
+      height: 40px;
+      margin-right: 8px;
+    }
+    h5 {
+      color: #282828;
+      input {
+        font-size: 16px;
+        color: #999cad;
+      }
+      svg {
+        fill: #999cad00;
+        stroke: #999cad;
+      }
+    }
+    .copy-address {
+      color: #282828;
+      opacity: 1;
+      svg {
+        fill: #28282800;
+        stroke: #282828;
+      }
+    }
+  }
+  .split {
+    width: 100%;
+    height: 10px;
+    left: 0;
+    top: 190px;
+    background-color: #f6f6f6;
+    position: fixed;
+  }
+  .menu {
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.03);
+      font-size: 16px;
+      color: #282828;
+      cursor: pointer;
+      svg {
+        fill: #999cad;
+        stroke: #999cad;
+      }
+    }
+  }
+}

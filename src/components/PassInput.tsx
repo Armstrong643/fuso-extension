@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { BaseInput } from "./BaseInput";
-import EyeOpenIcon from "@/images/eye-open.svg";
-import EyeCloseIcon from "@/images/eye-close.svg";
+import { Icon, Icons } from "@/components/Icon";
 interface IProps {
   placeholder?: string;
   style?: React.CSSProperties;
@@ -14,11 +13,18 @@ export const PassInput: React.FC<IProps> = (props) => {
   const iconClick = () => {
     setType(type === "password" ? "text" : "password");
   };
+  const suffix = (
+    <Icon
+      href={type === "password" ? Icons.EyeCloseIcon.id : Icons.EyeOpenIcon.id}
+      onClick={iconClick}
+      fill="#999CAD"
+      stroke="#999CAD00"
+    />
+  );
   return (
     <BaseInput
-      icon={type === "password" ? EyeCloseIcon.id : EyeOpenIcon.id}
+      suffix={suffix}
       type={type}
-      iconClick={iconClick}
       placeholder={placeholder}
       style={style}
       onChange={onChange}

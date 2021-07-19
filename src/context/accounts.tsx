@@ -27,7 +27,7 @@ function accountsReducer(
       return state;
   }
 }
-const testAccounts = {
+const testAccounts: WalletAccounts = {
   ETH: [
     {
       chain: "ETH",
@@ -58,6 +58,7 @@ const testAccounts = {
           contractAddress: "0xasd123asd123",
         },
       ],
+      createdTime: 1626662488852,
     },
     {
       chain: "ETH",
@@ -86,6 +87,7 @@ const testAccounts = {
       mnemonic: "",
       privateKey:
         "b5fd8674dfe310454154bb620ec09211c7e561448bf9d83881c0663f5c6a4924",
+      createdTime: 1626662505092,
       tokens: [
         {
           tokenName: "TAO",

@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useContext, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { Layout, BaseButton, BaseInput, Icon, BaseHeader } from "@/components";
+import { Layout, BaseButton, BaseInput, Icon } from "@/components";
 import { AppContext } from "@/context/app";
 import { mnemonicGenerate, mnemonicValidate } from "@polkadot/util-crypto";
 import { Icons } from "@/components/Icon";

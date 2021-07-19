@@ -1,9 +1,9 @@
 import React, { useContext, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useRouteMatch } from "react-router-dom";
 import { Layout, BaseButton } from "@/components";
 import { Icon, Icons } from "@/components/Icon";
 import { AppContext } from "@/context/app";
-import { shortenAddress } from "@/utils/util";
+import { shortenAddress, useQuery } from "@/utils/util";
 import "../styles/account.scss";
 const Main: React.FC = () => {
   const {
@@ -11,8 +11,9 @@ const Main: React.FC = () => {
   } = useContext(AppContext);
   const location = useLocation();
   const tokenIndex = useMemo(() => {
-    const match = location.search.match(/index=(\d+)/);
-    return match ? +match[1] : 0;
+    const query = useQuery();
+    const index = query.get("index");
+    return Number(index) || 0;
   }, [location]);
   const token = useMemo(() => {
     return currentAccount?.tokens[tokenIndex];

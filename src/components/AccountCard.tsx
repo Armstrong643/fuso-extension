@@ -1,13 +1,22 @@
 import React, { useContext, useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Address } from "@/components";
 import { Icons, Icon } from "@/components/Icon";
 import { AccountsContext } from "@/context/accounts";
-
+import { getChain } from "@/utils/chains";
 interface Props {
   account: WalletAccount;
   handleClick?: (account: WalletAccount) => void;
+  style?: React.CSSProperties;
+  showIcon?: boolean;
 }
-export const AccountCard: React.FC<Props> = ({ account, handleClick }) => {
+export const AccountCard: React.FC<Props> = ({
+  account,
+  handleClick,
+  style,
+  showIcon,
+}) => {
+  const history = useHistory();
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const handleCardClick = () => {
     handleClick && handleClick(account);
@@ -36,37 +45,55 @@ export const AccountCard: React.FC<Props> = ({ account, handleClick }) => {
     ref.current?.focus();
     setIsFocused(true);
   };
+  const handleDetailClick = () => {
+    history.push({
+      pathname: "/walletdetail",
+      state: account,
+    });
+  };
   return (
-    <div className="account-card" onClick={handleCardClick}>
-      <h5
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      >
-        <input
-          ref={ref}
-          value={account.accountName}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          onClick={handleInputClick}
-          readOnly={!isFocused}
-        />
-        <Icon
-          onClick={handleEditClick}
-          href={Icons.EditIcon.id}
-          fill="#ffffff00"
-          stroke="#fff"
-          width={16}
-          heihgt={16}
-        />
-      </h5>
-      <Address
-        text={account.address}
-        showCopy={true}
-        style={{
-          color: "#fff",
-          opacity: 0.6,
-        }}
+    <div
+      className="account-card"
+      style={{
+        ...style,
+        backgroundColor: getChain(account.chain)?.bg,
+      }}
+      onClick={handleCardClick}
+    >
+      {showIcon ? <img src={`/img/coin/${account.chain}.svg`} alt="" /> : null}
+      <div>
+        <h5
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <input
+            ref={ref}
+            value={account.accountName}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            onClick={handleInputClick}
+            readOnly={!isFocused}
+          />
+          <Icon
+            onClick={handleEditClick}
+            href={Icons.EditIcon.id}
+            fill="#ffffff00"
+            stroke="#fff"
+            width={16}
+            heihgt={16}
+          />
+        </h5>
+        <Address text={account.address} showCopy={true} />
+      </div>
+      <Icon
+        onClick={handleDetailClick}
+        href={Icons.ArrowRightIcon.id}
+        fill="#fff"
+        stroke="#fff"
+        width={16}
+        heihgt={16}
+        className="show-detail"
       />
     </div>
   );

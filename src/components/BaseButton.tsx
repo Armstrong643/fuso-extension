@@ -5,11 +5,13 @@ interface IProps {
   style?: React.CSSProperties;
   className?: string;
   disabled?: boolean;
+  blank?: boolean;
 }
 export const BaseButton: React.FC<IProps> = (props) => {
-  let { onClick, children, style, className, disabled } = props;
+  let { onClick, children, style, className, disabled, blank = false } = props;
   const classes = classnames("base-button", className, {
-    disabled: disabled,
+    disabled,
+    blank,
   });
   const handleClick = () => {
     if (disabled) {

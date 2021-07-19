@@ -12,12 +12,17 @@ import AccountDetail from "./views/AccountDetail";
 import Send from "./views/Send";
 import Receive from "./views/Receive";
 import WalletManage from "./views/WalletManage";
+import WalletDetail from "./views/WalletDetail";
+import ShowSecret from "./views/ShowSecret";
+import AddressBook from "./views/AddressBook";
+import AddAddress from "./views/AddAddress";
+import EditAddress from "./views/EditAddres";
 const App: React.FC = () => {
   const history = useHistory();
   const { dispatch } = useContext(AppContext);
   const { accounts } = useContext(AccountsContext);
   useEffect(() => {
-    history.push("/walletmanage");
+    history.push("/comeback");
     let account = accounts["TAO"][0];
     if (account) {
       dispatch({
@@ -38,6 +43,11 @@ const App: React.FC = () => {
       <Route component={Send} path="/send" />
       <Route component={Receive} path="/receive" />
       <Route component={WalletManage} path="/walletmanage" />
+      <Route component={WalletDetail} path="/walletdetail" />
+      <Route component={ShowSecret} path="/showsecret/:type" />
+      <Route component={AddressBook} path="/addressbook" />
+      <Route component={AddAddress} path="/addaddress" />
+      <Route component={EditAddress} path="/editaddress" />
     </Switch>
   );
 };

@@ -7,3 +7,4 @@ export { WalletList } from "./WalletList";
 export { Drawer } from "./Drawer";
 export { BaseHeader } from "./BaseHeader";
 export { Layout } from "./Layout";
+export { AccountCard } from "./AccountCard";

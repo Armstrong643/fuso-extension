@@ -18,24 +18,28 @@ export const Drawer: React.FC<IProps> = ({
           transform: isShowAside ? "translateX(0)" : "translateX(-100%)",
           left: 0,
           top: 0,
+          height: "100%",
         };
       case "right":
         return {
           transform: isShowAside ? "translateX(0)" : "translateX(100%)",
           right: 0,
           top: 0,
+          height: "100%",
         };
       case "bottom":
         return {
           transform: isShowAside ? "translateY(0)" : "translateY(100%)",
           left: 0,
           bottom: 0,
+          width: "100%",
         };
       case "top":
         return {
           transform: isShowAside ? "translateY(0)" : "translateY(-100%)",
           left: 0,
           top: 0,
+          width: "100%",
         };
     }
   }, [isShowAside]);

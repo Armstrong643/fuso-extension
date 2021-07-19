@@ -13,20 +13,32 @@
     background-color: rgba(24, 201, 189, 0.2);
     cursor: not-allowed;
   }
+  &.blank {
+    background-color: transparent;
+    border: 1px solid #18c9bd;
+    color: #18c9bd;
+  }
 }
 .base-input {
   position: relative;
+  padding: 0 15px;
   margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  width: 100%;
+  border: 1px solid #999cad;
+  border-radius: 16px;
+  font-size: 14px;
+  box-sizing: border-box;
+  overflow: hidden;
   input,
   textarea {
+    flex: 1;
+    height: 100%;
     box-sizing: border-box;
-    height: 56px;
-    width: 100%;
-    border: 1px solid #999cad;
-    border-radius: 16px;
+    border: none;
     outline: none;
-    font-size: 14px;
-    text-indent: 15px;
   }
   textarea {
     height: 112px;
@@ -34,17 +46,20 @@
     resize: none;
     text-indent: 0;
   }
-  p {
+  .tips {
     position: absolute;
     bottom: -25px;
     color: #eb5757;
     font-size: 13px;
   }
-  svg {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    cursor: pointer;
+  .prefix {
+    margin-right: 10px;
+  }
+  .suffix {
+    user-select: none;
+    svg {
+      cursor: pointer;
+    }
   }
 }
 .wallet-list {
@@ -102,7 +117,10 @@
   background: #547399;
   border-radius: 4px;
   cursor: pointer;
-  > h5 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  h5 {
     width: 70px;
     display: flex;
     align-items: center;
@@ -128,8 +146,17 @@
       cursor: pointer;
     }
   }
+  .show-detail {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+    visibility: hidden;
+  }
   .copy-address {
     width: 120px;
+    color: rgb(255, 255, 255);
+    opacity: 0.6;
   }
 }
 .copy-address {

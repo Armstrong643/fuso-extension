@@ -6,6 +6,7 @@ interface WalletState {
   mnemonic: string;
   password: string;
   currentAccount: WalletAccount | null;
+  isLogin: boolean;
 }
 interface AppAction {
   type: string;
@@ -17,8 +18,9 @@ interface AppState {
 }
 const initialState: WalletState = {
   mnemonic: "",
-  password: "pwd",
+  password: "",
   currentAccount: null,
+  isLogin: false,
 };
 function appReducer(state: WalletState, action: AppAction): WalletState {
   const { type, payload } = action;

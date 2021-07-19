@@ -58,10 +58,8 @@ const Main: React.FC = () => {
     <BaseButton
       style={{
         width: "160px",
-        backgroundColor: "transparent",
-        border: "1px solid #18C9BD",
-        color: "#18C9BD",
       }}
+      blank={true}
     >
       +添加代币
     </BaseButton>

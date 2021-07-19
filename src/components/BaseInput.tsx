@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Icon } from "@/components";
+import React from "react";
 import classnames from "classnames";
 interface IProps {
   onChange?: (e: string) => void;
@@ -8,10 +7,11 @@ interface IProps {
   type?: "text" | "password" | "textarea";
   placeholder?: string;
   value?: string;
-  icon?: string;
   iconClick?: () => void;
   tips?: string;
   readonly?: boolean;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
 }
 export const BaseInput: React.FC<IProps> = (props) => {
   let {
@@ -19,12 +19,12 @@ export const BaseInput: React.FC<IProps> = (props) => {
     type = "text",
     placeholder,
     className,
-    icon,
-    iconClick,
     style,
     tips,
     value,
     readonly,
+    prefix,
+    suffix,
   } = props;
   const classes = classnames("base-input", className);
   const handleChange = (
@@ -33,11 +33,9 @@ export const BaseInput: React.FC<IProps> = (props) => {
     let { value } = e.target;
     onChange && onChange(value);
   };
-  const handleIconClick = () => {
-    iconClick && iconClick();
-  };
   return (
     <div className={classes} style={style}>
+      {prefix ? <span className="prefix">{prefix}</span> : null}
       {type === "textarea" ? (
         <textarea
           placeholder={placeholder}
@@ -54,15 +52,8 @@ export const BaseInput: React.FC<IProps> = (props) => {
           readOnly={readonly}
         />
       )}
-      {tips ? <p>{tips}</p> : null}
-      {icon ? (
-        <Icon
-          href={icon}
-          onClick={handleIconClick}
-          fill="#999CAD"
-          stroke="#999CAD00"
-        />
-      ) : null}
+      {tips ? <p className="tips">{tips}</p> : null}
+      {suffix ? <span className="suffix">{suffix}</span> : null}
     </div>
   );
 };

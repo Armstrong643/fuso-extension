@@ -1,0 +1,28 @@
+.add-address {
+  input {
+    font-size: 16px;
+  }
+  .suffix {
+    svg {
+      transform: translateY(-5px) rotate(90deg);
+    }
+  }
+  ul {
+    background-color: #fff;
+    border-radius: 16px 16px 0px 0px;
+    li {
+      box-sizing: border-box;
+      height: 70px;
+      padding: 15px 16px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      color: #282828;
+      box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.03);
+      cursor: pointer;
+      img {
+        margin-right: 16px;
+      }
+    }
+  }
+}

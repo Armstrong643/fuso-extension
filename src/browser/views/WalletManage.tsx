@@ -1,15 +1,13 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Layout, WalletList, BaseButton, Drawer } from "@/components";
 import "../styles/walletmanage.scss";
 const Main: React.FC = () => {
   const [isShowAside, setIsShowAside] = useState(false);
+  const history = useHistory();
   const footer = (
     <BaseButton
-      style={{
-        backgroundColor: "#fff",
-        border: "1px solid #18C9BD",
-        color: "#18C9BD",
-      }}
+      blank={true}
       onClick={() => {
         setIsShowAside(true);
       }}
@@ -27,8 +25,20 @@ const Main: React.FC = () => {
         }}
         position="bottom"
       >
-        <div>创建钱包</div>
-        <div>导入钱包</div>
+        <div
+          onClick={() => {
+            history.push("/showmnemonic");
+          }}
+        >
+          创建钱包
+        </div>
+        <div
+          onClick={() => {
+            history.push("/mnemonic/import");
+          }}
+        >
+          导入钱包
+        </div>
       </Drawer>
     </Layout>
   );

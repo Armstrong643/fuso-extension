@@ -1,5 +1,3 @@
-// Copyright 2017-2021 @polkadot/vanitygen authors & contributors
-// SPDX-License-Identifier: Apache-2.0
 import {
   encodeAddress,
   mnemonicGenerate,
@@ -9,12 +7,14 @@ import {
   schnorrkelKeypairFromSeed,
 } from "@polkadot/util-crypto";
 import { Keyring } from "@polkadot/api";
+import { keccak512 } from "js-sha3";
+import { AES, enc } from "crypto-js";
 interface Options {
   withHex: boolean;
   type: "sr25519" | "ed25519" | "raw";
   ss58Format: 42;
 }
-export default function generator(options: Options) {
+export function generator(options: Options) {
   const mnemonic = options.withHex ? undefined : mnemonicGenerate(12);
   const seed = mnemonic ? mnemonicToMiniSecret(mnemonic) : randomAsU8a();
   const keyring = new Keyring({
@@ -33,4 +33,13 @@ export default function generator(options: Options) {
     mnemonic,
     seed,
   };
+}
+export function data2keccak512(data: string) {
+  return keccak512(data);
+}
+export function encryptMessage(message: string, hash: string) {
+  return AES.encrypt(message, hash).toString();
+}
+export function decryptMessage(message: string, hash: string) {
+  return AES.decrypt(message, hash).toString(enc.Utf8);
 }

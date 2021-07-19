@@ -2,15 +2,15 @@ import React, { useState, useContext, useEffect } from "react";
 import { AccountsContext } from "@/context/accounts";
 import { AppContext } from "@/context/app";
 import { AccountCard } from "./AccountCard";
+import { Chains } from "@/utils/chains";
 import classnames from "classnames";
-import wallets from "@/utils/chain";
 interface Props {
   onChange?: (account: WalletAccount) => void;
 }
 export const WalletList: React.FC<Props> = ({ onChange }) => {
   const { accounts } = useContext(AccountsContext);
   const { appState } = useContext(AppContext);
-  const [selected, setSelected] = useState<string>("ETH");
+  const [selected, setSelected] = useState<string>("");
   const handleChainClick = (chain: Chain) => {
     setSelected(chain.name);
   };
@@ -25,7 +25,7 @@ export const WalletList: React.FC<Props> = ({ onChange }) => {
   return (
     <div className="wallet-list">
       <div className="left">
-        {wallets.map((wallet) => {
+        {Chains.map((wallet) => {
           return (
             <div
               onClick={() => handleChainClick(wallet)}
